@@ -17,7 +17,7 @@ describe("As a user I add a self-help module from Catalogue", () => {
     })
 
     it("Assert module is added to home screen ", () => {
-        cy.visit('/')
+       // cy.visit('/')
         //cy.get('[class*="header"]',{timeout:20000}).eq(9).should('exist').click({force:true})                              //User clicks on Module from Header
         cy.get('[id="primary-tools"]>:nth-child(1)>:nth-child(1)').invoke("attr","title").then((invokedModuleTitle) =>{
             cy.log(invokedModuleTitle)
@@ -26,7 +26,7 @@ describe("As a user I add a self-help module from Catalogue", () => {
     })
 
     it("Assert module in the catalogue is labled as TRAINING ", () => {
-        cy.get('[class*="header"]',{timeout:20000}).eq(8).should('exist').click({force:true})  //User clicks on Module from Header
+        cy.get('[class="header__navigation-items"]>:nth-child(2)>:nth-child(1)',{timeout:20000}).should('exist').click({force:true})  //User clicks on Module from Header
         cy.get('[id="catalogue-searchform"]',{timeout:20000}).find('input[type="text"]').type(searchTerm).wait(3000) //User types in search field
         cy.get('[class="catalogue-card"]>:nth-child(2)>:nth-child(1)>:nth-child(1)',{timeout:20000}).invoke('text').then((invokedTitle) =>{
             cy.log(invokedTitle)
